@@ -22,7 +22,7 @@ export default function SubmissionBox({ children, name, entries }: React.PropsWi
                 {children}
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-y-5 sm:gap-x-6 mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-5 sm:gap-x-6 mt-6">
 
                 {
                     (entries || []).map(mod => (<ModCard modData={mod} key={mod.name} />))

@@ -30,8 +30,10 @@ export default function ModCard({modData} : {modData:ModProps}): ReactElement {
     return (
         <div className="flex gap-x-4 p-2 border-2 border-yellow-700 bg-yellow-900 bg-opacity-25">
 
-            <Image src={modData.logo} width={128} height={128} className="hidden lg:block flex-none w-32 h-32 my-auto bg-[#1F1F1F] border border-yellow-700" alt={`${modData.name} logo`}/>
-
+            <div className={`flex-none w-32 h-32 my-auto`}>
+                <Image src={modData.logo} width={128} height={128} className="bg-[#1F1F1F] border border-yellow-700" alt={`${modData.name} logo`}/>
+            </div>
+            
             <div className="flex-grow">
                 <a className="text-xl sm:text-2xl lg:text-3xl hover:text-yellow-600 font-medium" href={modData.homepage} target={"_blank"} rel="noreferrer">{truncate(modData.name, 25)}</a>
                 <p className="text-lg lg:text-xl">{"By "} {modData.author.map((val: Author, index) => <Author author={val} index={index} key={val.name}/>)}</p>
