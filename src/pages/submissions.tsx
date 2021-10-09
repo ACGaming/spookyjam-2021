@@ -129,11 +129,13 @@ type CurseStub = {
     summary: string;
     downloadCount: string;
     attachments: { isDefault: boolean, url: string }[];
+    modLoaders: string[];
 }
 
 async function fetchModData(curseId: number): Promise<ModProps> {
 
     return axios.get<CurseStub>(`https://addons-ecs.forgesvc.net/api/v2/addon/${curseId}`).then(res => {
+
         return {
             name: res.data.name,
             author: res.data.authors.map(auth => {
@@ -142,7 +144,8 @@ async function fetchModData(curseId: number): Promise<ModProps> {
             homepage: res.data.websiteUrl,
             logo: res.data.attachments.filter(a => a.isDefault)[0].url,
             downloads: res.data.downloadCount,
-            summary: res.data.summary
+            summary: res.data.summary,
+            modLoaders: res.data.modLoaders ?? new Array<string>()
         };
     }).catch(err => {
         console.log(err);
@@ -152,7 +155,8 @@ async function fetchModData(curseId: number): Promise<ModProps> {
             homepage: 'https://www.curseforge.com/minecraft',
             logo: 'https://media.forgecdn.net/avatars/84/193/636193647832736518.gif',
             downloads: '-1',
-            summary: `Could not get data for modId ${curseId}.`
+            summary: `Could not get data for modId ${curseId}.`,
+            modLoaders: new Array<string>()
         }
     });
 

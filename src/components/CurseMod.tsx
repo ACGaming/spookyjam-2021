@@ -11,6 +11,7 @@ export interface ModProps {
     logo: string;
     downloads: string;
     summary: string;
+    modLoaders: string[];
 }
 
 export default function ModCard({modData} : {modData:ModProps}): ReactElement {
@@ -28,7 +29,7 @@ export default function ModCard({modData} : {modData:ModProps}): ReactElement {
     }
 
     return (
-        <div className="flex gap-x-4 p-2 border-2 border-yellow-700 bg-yellow-900 bg-opacity-25">
+        <div className={'flex gap-x-4 p-2 border-2 border-yellow-700 bg-yellow-900 bg-opacity-25 ' + modData.modLoaders.join(' ').toLowerCase()}>
 
             <div className={`flex-none w-32 h-32 my-auto`}>
                 <Image src={modData.logo} width={128} height={128} className="bg-[#1F1F1F] border border-yellow-700" alt={`${modData.name} logo`}/>
