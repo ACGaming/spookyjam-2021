@@ -12,7 +12,8 @@ const projectIds = {
     twentyone: [
         533254,
         534052,
-        534284
+        534284,
+        533925
     ],
 
     twenty: [
